@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QApplication, QFileDialog
 from PyQt5.QtWebKit import QWebSettings
 from PyQt5.QtWebKitWidgets import QWebView, QWebInspector
 
-from gitworks import prepare_patch
+from gitworks import prepare_patch, push_patch
 from handsome import full_project_info
 from repo_handler import mirror_repo_to_tmp
 from settings_keeper import load_settings, save_settings
@@ -76,6 +76,7 @@ class Browser(QWebView):
         branch = [b["name"] for b in settings["branches"] if b["active"]][0]
         random_str = uuid.uuid4().hex.capitalize()
         prepare_patch(random_str, asd["git"], asd["package_name"], json.dumps(asd["desktop_files"]), branch)
+        push_patch(random_str)
         return json.dumps({"status": "ok"})
 
     @pyqtSlot(int, result=str)

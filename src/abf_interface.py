@@ -11,7 +11,6 @@ def get_project_id(group, name):
     """
     response = urllib.request.urlopen("https://abf.io/api/v1/search.json?type=projects&query=" + name)
     decode = response.read().decode("UTF-8")
-    print(decode)
     projects = json.loads(decode)['results']['projects']
     projects = [x for x in projects if "fullname" in x and x['fullname'] == group + "/" + name]
     if len(projects) > 0:
