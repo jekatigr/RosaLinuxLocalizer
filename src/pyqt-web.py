@@ -88,7 +88,7 @@ class Browser(QWebView):
             directory = a.getExistingDirectory(options=QFileDialog.ShowDirsOnly)[0]
             return json.dumps(directory)
         elif mode == 3:
-            return json.dumps(a.getOpenFileName())[0]
+            return json.dumps(a.getOpenFileName()[0])
 
 
 if __name__ == '__main__':

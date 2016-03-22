@@ -35,7 +35,7 @@ def read_desktop(dir_name, file, dyn_names):
 
 def read_file(way):
     with open(way) as d:
-        return d.readlines()
+        return d.read()
 
 
 def read_rpm_file(filename, dyn_names):
