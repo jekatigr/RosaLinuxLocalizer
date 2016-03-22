@@ -3,7 +3,7 @@ import os
 import sys
 import uuid
 
-from PyQt5.QtCore import QUrl, pyqtSlot
+from PyQt5.QtCore import QUrl, pyqtSlot, Qt
 from PyQt5.QtWidgets import QApplication, QFileDialog
 from PyQt5.QtWebKit import QWebSettings
 from PyQt5.QtWebKitWidgets import QWebView, QWebInspector
@@ -96,6 +96,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     view = Browser()
     view.setWindowTitle("Handsome Localizer v1.0")
+    view.setContextMenuPolicy(Qt.NoContextMenu)
     view.load(QUrl("file://" + os.getcwd() + "/html/main.html"))
     view.page().mainFrame().addToJavaScriptWindowObject("Bridge", view)
     view.setVisible(True)
